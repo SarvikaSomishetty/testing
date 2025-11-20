@@ -272,4 +272,35 @@ sudo docker run -d -p 80:80 mywebapp
 If app does not load → fix Security Group
 Go to EC2 → Security → Security Groups
 Edit inbound rules → Add Rule
+
 Custom TCP → Port 9090 → Source 0.0.0.0/0
+
+minikube start
+eval $(minikube docker-env)
+docker build -t myapp:latest .
+deployment.yaml---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp-container
+          image: myapp:latest
+          ports:
+            - containerPort: 3000
+kubectl apply -f deployment.yaml
+kubectl get pods
+kubectl expose deployment myapp --type=NodePort --port=3000
+kubectl get svc
+minikube service myapp
