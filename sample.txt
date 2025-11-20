@@ -304,3 +304,8 @@ kubectl get pods
 kubectl expose deployment myapp --type=NodePort --port=3000
 kubectl get svc
 minikube service myapp
+
+
+nginx docker
+FROM nginx:latest
+COPY index.html /usr/share/nginx/html/index.html
