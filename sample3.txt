@@ -2,14 +2,15 @@ COMMANDS:
 GIT, DOCKER, KUBERNETES, NAGIOS
 
 
-SSH-Keygen: ssh-keygen -t rsa -C adityapanyalastudy@gmail.com
+SSH-Keygen: ssh-keygen -t rsa -C sarvikashetty30@gmail.com
+ssh-keygen -t rsa(worked)
 
 git:
 
 config :
 
-git config --global user.name "Your Name"
-git config --global user.email "youremail@example.com"
+git config --global user.name "Sarvika"
+git config --global user.email "sarvikashetty30@gmail.com"
 git config --list
 
 repo setup:
@@ -94,11 +95,6 @@ git am < mychanges.patch
 
 
 -----------------------------------------
-
-
-
-
-
 docker:
 
 FROM tomcat:9.0
@@ -128,7 +124,6 @@ services:
       - "3306:3306"
 ++++++++++++++++++++++++
 
-
 docker build -t oles-app .
 docker run -d -p 8088:8080 --name oles-ooga oles-app
 
@@ -142,10 +137,7 @@ docker exec -it oles-mysql-1 mysql -u root -p
 docker tag oles-app epicdino/oles-app 
 docker push epicdino/oles-app
 
-
-
 ------------------------------------------------------------------------------------------------------------------
-
 MINIKUBE:
 minikube start
 kubectl create deployment mynginx --image=nginx
@@ -154,39 +146,7 @@ kubectl expose deployment mynginx --type=NodePort --port=8080 --target-port=80
 kubectl scale deployment mynginx --replicas=4
 kubectl port-forward svc/mynginx 8081:8080
 view in 8081
-
+------------------------------------------------------------------------------------------------------------------
 NAGIOS:
 docker pull jasonrivers/nagios:latest
 → docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest   -> openlocalhost:8888 it will ask username:nagiosadmin , pass:nagios
-
-------------------------------------------------------------------------------------------------------------------
-for nginx:
-
-docker pull ubuntu:latest
-docker run -it --name myubuntu -p 9090:80 ubuntu:latest
-apt install nginx -y
-ls
-cd usr
-cd share
-cd nginx
-cat /etc/nginx/sites-enabled/default
-cp /usr/share/nginx/html/index.html /var/www/html/index.html
-nano index.html -> make changes
-
-DOCKER IMAGE CREATION:
-docker commit myubuntu myimage
-docker images
-docker run -it myimage
-docker tag myimage ananyabijja15/myimage
-docker push ananyabijja15/myimage
-
-
-using docker file:
-write dockerfile
-docker build -t image .
-docker run -it myimage
-make changes
-docker tag myimage ananyabijja15/myimage
-docker push ananyabijja15/myimage
-
-
