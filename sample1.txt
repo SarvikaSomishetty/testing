@@ -722,6 +722,7 @@ Add: Editable Email Notification
 Recipient list: somisettysarvika@gmail.com
 Triggers:Always
 
+-->SMTP port if 465 not working 587
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 AWS (EC2)
@@ -828,4 +829,5 @@ CREATE AUTHENTICATOR [https://dashboard.ngrok.com/get-started/your-authtoken]
 Run this command (replace <your_token> with yours):
 ngrok config add-authtoken <your_token>
 This ensures stable sessions and more control.
+
 
